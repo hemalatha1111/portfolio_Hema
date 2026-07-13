@@ -1,0 +1,1281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hemalatha Natte — Full Stack Developer</title>
+    <meta
+      name="description"
+      content="Aspiring Software Engineer skilled in Java, DSA, and AWS. Portfolio, projects and contact."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --bg-alt: #f8f7fc;
+        --surface: #ffffff;
+        --ink: #201f33;
+        --ink-soft: #68667c;
+        --border: #ece9f5;
+        --primary: #7c5cf0;
+        --primary-dark: #6a49e0;
+        --primary-soft: #efeafd;
+        --teal: #16b892;
+        --amber: #f5a524;
+        --radius: 18px;
+        --maxw: 1100px;
+        --font-display: "Poppins", sans-serif;
+        --font-body: "Inter", sans-serif;
+        --shadow: 0 20px 45px rgba(84, 66, 166, 0.1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        * {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-body);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--font-display);
+        margin: 0;
+      }
+      .wrap {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      section {
+        padding: 100px 0;
+      }
+      :focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 3px;
+      }
+      .eyebrow {
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--primary);
+        margin-bottom: 12px;
+      }
+      .section-title {
+        font-size: clamp(26px, 3.4vw, 36px);
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .section-sub {
+        color: var(--ink-soft);
+        max-width: 560px;
+        margin-bottom: 48px;
+        font-size: 16px;
+      }
+
+      /* ---------- NAV ---------- */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+      }
+      .navbar-inner {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 0 24px;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--ink);
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 16px;
+      }
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--primary), #a78bfa);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        font-size: 14.5px;
+        font-weight: 500;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--ink-soft);
+        transition: color 0.15s ease;
+      }
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+      .nav-cta {
+        background: var(--primary);
+        color: #fff;
+        padding: 11px 20px;
+        border-radius: 100px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        transition:
+          background 0.15s ease,
+          transform 0.15s ease;
+      }
+      .nav-cta:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+      }
+
+      /* ---------- HERO ---------- */
+      .hero {
+        padding: 88px 0 100px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -160px;
+        right: -160px;
+        width: 520px;
+        height: 520px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at center,
+          rgba(124, 92, 240, 0.16),
+          rgba(124, 92, 240, 0) 70%
+        );
+        pointer-events: none;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 56px;
+        align-items: center;
+        position: relative;
+      }
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--teal);
+        background: #e7f9f3;
+        border: 1px solid #c9f0e2;
+        padding: 7px 14px;
+        border-radius: 100px;
+        margin-bottom: 22px;
+      }
+      .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--teal);
+        animation: pulse 1.8s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.35;
+        }
+      }
+      .hero h1 {
+        font-size: clamp(36px, 5.2vw, 54px);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 16px;
+      }
+      .hero h1 .accent {
+        background: linear-gradient(135deg, var(--primary), #a78bfa);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .role-line {
+        font-size: clamp(17px, 2vw, 20px);
+        font-weight: 600;
+        color: var(--primary-dark);
+        margin-bottom: 20px;
+        min-height: 28px;
+      }
+      .role-line .cursor {
+        display: inline-block;
+        width: 2px;
+        background: var(--primary);
+        margin-left: 2px;
+        animation: blink 1s step-end infinite;
+        transform: translateY(3px);
+        height: 1.1em;
+      }
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+      .hero p.desc {
+        color: var(--ink-soft);
+        max-width: 480px;
+        margin-bottom: 30px;
+        font-size: 16.5px;
+      }
+      .hero-ctas {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 28px;
+      }
+      .btn {
+        font-size: 14.5px;
+        font-weight: 600;
+        padding: 13px 24px;
+        border-radius: 100px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease,
+          background 0.15s ease;
+      }
+      .btn-primary {
+        background: var(--primary);
+        color: #fff;
+        box-shadow: 0 12px 24px rgba(124, 92, 240, 0.28);
+      }
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+      .btn-ghost {
+        border: 1.5px solid var(--border);
+        color: var(--ink);
+      }
+      .btn-ghost:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
+      .hero-links {
+        display: flex;
+        gap: 20px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .hero-links a {
+        color: var(--ink-soft);
+        text-decoration: none;
+      }
+      .hero-links a:hover {
+        color: var(--primary);
+      }
+
+      .photo-wrap {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .photo-ring {
+        position: absolute;
+        width: 340px;
+        height: 340px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), #a78bfa, #f5a524);
+        opacity: 0.18;
+        filter: blur(6px);
+      }
+      .photo-frame {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 6px solid #fff;
+        box-shadow: var(--shadow);
+      }
+      .photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .photo-badge {
+        position: absolute;
+        bottom: 8px;
+        right: calc(50% - 150px);
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        padding: 8px 14px;
+        font-size: 12.5px;
+        font-weight: 600;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      /* ---------- ABOUT ---------- */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+        gap: 48px;
+      }
+      .about-grid p {
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+        max-width: 560px;
+        font-size: 15.5px;
+      }
+      .facts {
+        background: var(--bg-alt);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 26px;
+        height: fit-content;
+      }
+      .fact-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 14.5px;
+      }
+      .fact-row:last-child {
+        border-bottom: none;
+      }
+      .fact-label {
+        color: var(--ink-soft);
+        font-weight: 500;
+      }
+      .fact-value {
+        font-weight: 600;
+        text-align: right;
+      }
+
+      /* ---------- SKILLS ---------- */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+      .skill-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 22px;
+        transition:
+          box-shadow 0.15s ease,
+          transform 0.15s ease;
+      }
+      .skill-card:hover {
+        box-shadow: var(--shadow);
+        transform: translateY(-3px);
+      }
+      .skill-card h3 {
+        font-size: 14px;
+        color: var(--ink);
+        margin-bottom: 14px;
+        font-weight: 600;
+      }
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .chip {
+        font-size: 12.5px;
+        font-weight: 500;
+        background: var(--primary-soft);
+        color: var(--primary-dark);
+        padding: 6px 12px;
+        border-radius: 100px;
+      }
+
+      /* ---------- EDUCATION / CERTS ---------- */
+      .edu-cert-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+      }
+      .edu-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        margin-bottom: 14px;
+      }
+      .edu-item h3 {
+        font-size: 17px;
+        margin-bottom: 4px;
+      }
+      .edu-item .sub {
+        color: var(--ink-soft);
+        font-size: 14px;
+      }
+      .edu-item .meta {
+        font-size: 12.5px;
+        color: var(--teal);
+        margin-top: 10px;
+        font-weight: 600;
+      }
+      .cert-list a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 17px 20px;
+        margin-bottom: 12px;
+        text-decoration: none;
+        color: var(--ink);
+        transition:
+          border-color 0.15s ease,
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      .cert-list a:hover {
+        border-color: var(--primary);
+        transform: translateX(3px);
+        box-shadow: var(--shadow);
+      }
+      .cert-name {
+        font-weight: 600;
+        font-size: 14.5px;
+      }
+      .cert-meta {
+        font-size: 12px;
+        color: var(--ink-soft);
+        margin-top: 2px;
+      }
+      .cert-arrow {
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      /* ---------- PROJECTS ---------- */
+      .proj-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 22px;
+      }
+      .proj-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transition:
+          border-color 0.15s ease,
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      .proj-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow);
+      }
+      .proj-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 14px;
+      }
+      .proj-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: var(--primary-soft);
+        color: var(--primary-dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-family: var(--font-display);
+      }
+      .proj-status {
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 4px 10px;
+        border-radius: 100px;
+      }
+      .proj-status.live {
+        background: #e7f9f3;
+        color: var(--teal);
+      }
+      .proj-status.pending {
+        background: #fdf1e0;
+        color: var(--amber);
+      }
+      .proj-card h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+      .proj-card p {
+        color: var(--ink-soft);
+        font-size: 14.5px;
+        margin-bottom: 16px;
+        flex-grow: 1;
+      }
+      .proj-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 20px;
+      }
+      .proj-tags span {
+        font-size: 11.5px;
+        color: var(--ink-soft);
+        background: var(--bg-alt);
+        border: 1px solid var(--border);
+        padding: 4px 10px;
+        border-radius: 100px;
+      }
+      .proj-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: auto;
+      }
+      .proj-link {
+        font-size: 13px;
+        font-weight: 600;
+        padding: 10px 14px;
+        border-radius: 100px;
+        text-decoration: none;
+        flex: 1;
+        text-align: center;
+        border: 1.5px solid var(--border);
+        color: var(--ink);
+        transition: all 0.15s ease;
+      }
+      .proj-link.primary {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+      }
+      .proj-link.primary:hover {
+        background: var(--primary-dark);
+      }
+      .proj-link:not(.primary):hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+      .proj-link.disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      /* ---------- CONTACT ---------- */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 48px;
+      }
+      .contact-info p {
+        color: var(--ink-soft);
+        margin-bottom: 22px;
+        max-width: 420px;
+        font-size: 15.5px;
+      }
+      .contact-direct {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .contact-direct a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+      .contact-social {
+        display: flex;
+        gap: 18px;
+        margin-top: 22px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .contact-social a {
+        color: var(--ink-soft);
+        text-decoration: none;
+      }
+      .contact-social a:hover {
+        color: var(--primary);
+      }
+      form {
+        background: var(--bg-alt);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      label {
+        display: block;
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--ink-soft);
+        margin-bottom: 7px;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        font-family: var(--font-body);
+        font-size: 14.5px;
+        background: #fff;
+        color: var(--ink);
+      }
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+      .full-row {
+        margin-bottom: 14px;
+      }
+      textarea {
+        resize: vertical;
+        min-height: 110px;
+      }
+      .submit-btn {
+        font-family: var(--font-body);
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        padding: 14px 22px;
+        border-radius: 100px;
+        font-size: 14.5px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        transition: background 0.15s ease;
+      }
+      .submit-btn:hover {
+        background: var(--primary-dark);
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 32px 0;
+        background: var(--bg-alt);
+      }
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+      }
+      .footer-inner a {
+        color: var(--ink-soft);
+        text-decoration: none;
+      }
+      .footer-inner a:hover {
+        color: var(--primary);
+      }
+
+      @media (max-width: 860px) {
+        .nav-links {
+          display: none;
+        }
+        .hero-grid,
+        .about-grid,
+        .edu-cert-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-grid {
+          text-align: center;
+        }
+        .hero-ctas,
+        .hero-links {
+          justify-content: center;
+        }
+        .photo-wrap {
+          order: -1;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        section {
+          padding: 64px 0;
+        }
+      }
+    </style>
+  </head>
+  <body id="top">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a href="#top" class="brand"
+          ><span class="brand-mark">HN</span> Hemalatha Natte</a
+        >
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a
+          class="nav-cta"
+          href="https://drive.google.com/file/d/1V35s_SxOrKQcQ0vUY5avC-F0VpQKbi8X/view?usp=sharing"
+          target="_blank"
+          rel="noopener"
+          >Download Resume</a
+        >
+      </div>
+    </div>
+
+    <!-- ================= HERO ================= -->
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="status-pill">
+            <span class="status-dot"></span>Open for opportunities
+          </div>
+          <h1>Hi, I'm <span class="accent">Hemalatha</span></h1>
+          <div class="role-line" id="roleLine"></div>
+          <p class="desc">
+            Aspiring Software Engineer skilled in Java, DSA, and AWS. I love
+            turning ideas into reliable, well-engineered software.
+          </p>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#contact" class="btn btn-ghost">Get in touch</a>
+          </div>
+          <div class="hero-links">
+            <a
+              href="https://leetcode.com/u/Hemalatha42/"
+              target="_blank"
+              rel="noopener"
+              >LeetCode</a
+            >
+            <a
+              href="https://github.com/hemalatha1111"
+              target="_blank"
+              rel="noopener"
+              >GitHub</a
+            >
+            <a
+              href="https://www.hackerearth.com/@nattehemalatha/"
+              target="_blank"
+              rel="noopener"
+              >HackerEarth</a
+            >
+          </div>
+        </div>
+        <div class="photo-wrap">
+          <div class="photo-ring"></div>
+          <div class="photo-frame">
+            <img src="photo.jpg" alt="Hemalatha Natte" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about">
+      <div class="wrap about-grid">
+        <div>
+          <div class="eyebrow">About</div>
+          <h2 class="section-title">A bit about me</h2>
+          <p>
+            I'm an aspiring Software Engineer with a strong interest in Java and
+            programming. I have solid knowledge of SQL, HTML and CSS and am
+            currently learning Java Full Stack development.
+          </p>
+          <p>
+            I'm consistent in practicing Data Structures and Algorithms,
+            maintaining daily coding streaks to improve my problem-solving
+            skills. I've also earned an AWS Development certification, giving me
+            a working understanding of cloud-based applications.
+          </p>
+          <p>
+            I'm familiar with Linux and networking fundamentals, and hold
+            multiple certifications that reflect my commitment to continuous
+            learning. I'm passionate about building real-world applications and
+            growing into a skilled, reliable developer.
+          </p>
+        </div>
+        <div class="facts">
+          <div class="fact-row">
+            <span class="fact-label">Primary Domain</span
+            ><span class="fact-value">Web Development</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">Email</span
+            ><span class="fact-value">nattehemalatha@gmail.com</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">Status</span
+            ><span class="fact-value">Open for opportunities</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section
+      id="skills"
+      style="
+        background: var(--bg-alt);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      "
+    >
+      <div class="wrap">
+        <div class="eyebrow">Skills</div>
+        <h2 class="section-title">Tools I build with</h2>
+        <p class="section-sub">
+          The languages, frameworks and tools I use day to day.
+        </p>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Frontend</h3>
+            <div class="chip-row">
+              <span class="chip">HTML</span><span class="chip">CSS</span
+              ><span class="chip">Java</span
+              ><span class="chip">JavaScript</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Backend</h3>
+            <div class="chip-row">
+              <span class="chip">Java</span><span class="chip">Spring Boot</span
+              ><span class="chip">AWS</span><span class="chip">Linux</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Databases</h3>
+            <div class="chip-row"><span class="chip">MySQL</span></div>
+          </div>
+          <div class="skill-card">
+            <h3>Tools</h3>
+            <div class="chip-row">
+              <span class="chip">Git</span><span class="chip">GitHub</span
+              ><span class="chip">VS Code</span
+              ><span class="chip">Eclipse</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>AI Tools</h3>
+            <div class="chip-row">
+              <span class="chip">ChatGPT</span
+              ><span class="chip">Antigravity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section id="projects">
+      <div class="wrap">
+        <div class="eyebrow">Projects</div>
+        <h2 class="section-title">Selected work</h2>
+        <p class="section-sub">
+          Every build, live demo and source, in one place.
+        </p>
+        <div class="proj-grid" id="projGrid"></div>
+      </div>
+    </section>
+
+    <!-- ================= EDUCATION + CERTS ================= -->
+    <section
+      id="education"
+      style="
+        background: var(--bg-alt);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      "
+    >
+      <div class="wrap edu-cert-grid">
+        <div>
+          <div class="eyebrow">Education</div>
+          <h2
+            class="section-title"
+            style="font-size: 26px; margin-bottom: 24px"
+          >
+            Academic background
+          </h2>
+          <div class="edu-item">
+            <h3>B.Tech, Computer Science &amp; Engineering</h3>
+            <div class="sub">Aditya College of Engineering and Technology</div>
+            <div class="meta">Surampalem, Andhra Pradesh · Graduating 2026</div>
+          </div>
+        </div>
+        <div>
+          <div class="eyebrow">Certifications</div>
+          <h2
+            class="section-title"
+            style="font-size: 26px; margin-bottom: 24px"
+          >
+            Verified credentials
+          </h2>
+          <div class="cert-list">
+            <a
+              href="https://drive.google.com/file/d/1GT68WSoKB6dfCIiE1NxswpvZDU9GmV16/view?usp=sharing"
+              target="_blank"
+              rel="noopener"
+            >
+              <div>
+                <div class="cert-name">IT Specialist in Java</div>
+                <div class="cert-meta">Certiport Pearson · July 2024</div>
+              </div>
+              <span class="cert-arrow">→</span>
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1J2vezSBhuJpMe0K62RxJ-_vvvcChwmRb/view?usp=sharing"
+              target="_blank"
+              rel="noopener"
+            >
+              <div>
+                <div class="cert-name">AWS Certified Developer – Associate</div>
+                <div class="cert-meta">Amazon Web Services · July 2025</div>
+              </div>
+              <span class="cert-arrow">→</span>
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1-YKeE7QFw6njRqIi1GNYKMEjVJViuqii/view?usp=sharing"
+              target="_blank"
+              rel="noopener"
+            >
+              <div>
+                <div class="cert-name">CCNAv7: Introduction to Networks</div>
+                <div class="cert-meta">Cisco · July 2024</div>
+              </div>
+              <span class="cert-arrow">→</span>
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1vBaVytalxu6aXkUWJcG4rk1JTBk5he5m/view?usp=sharing"
+              target="_blank"
+              rel="noopener"
+            >
+              <div>
+                <div class="cert-name">NDG Linux Essentials</div>
+                <div class="cert-meta">NDG Linux · June 2024</div>
+              </div>
+              <span class="cert-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact">
+      <div class="wrap contact-grid">
+        <div class="contact-info">
+          <div class="eyebrow">Contact</div>
+          <h2 class="section-title">Let's work together</h2>
+          <p>
+            I'm currently open for internships and full-time opportunities. Fill
+            the form or reach out directly — I usually respond within a day.
+          </p>
+          <div class="contact-direct">
+            ✉
+            <a href="mailto:nattehemalatha@gmail.com"
+              >nattehemalatha@gmail.com</a
+            >
+          </div>
+          <div class="contact-social">
+            <a
+              href="https://leetcode.com/u/Hemalatha42/"
+              target="_blank"
+              rel="noopener"
+              >LeetCode</a
+            >
+            <a
+              href="https://github.com/hemalatha1111"
+              target="_blank"
+              rel="noopener"
+              >GitHub</a
+            >
+            <a
+              href="https://www.hackerearth.com/@nattehemalatha/"
+              target="_blank"
+              rel="noopener"
+              >HackerEarth</a
+            >
+          </div>
+        </div>
+        <form id="contactForm">
+          <div class="form-row">
+            <div>
+              <label for="fname">Name</label
+              ><input id="fname" name="name" type="text" required />
+            </div>
+            <div>
+              <label for="femail">Email</label
+              ><input id="femail" name="email" type="email" required />
+            </div>
+          </div>
+          <div class="full-row">
+            <label for="fsubject">Subject</label
+            ><input id="fsubject" name="subject" type="text" />
+          </div>
+          <div class="full-row">
+            <label for="fmessage">Message</label
+            ><textarea id="fmessage" name="message" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap footer-inner">
+        <span>© 2026 Hemalatha Natte. All rights reserved.</span>
+        <span>
+          <a
+            href="https://github.com/hemalatha1111"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+          ·
+          <a
+            href="https://leetcode.com/u/Hemalatha42/"
+            target="_blank"
+            rel="noopener"
+            >LeetCode</a
+          >
+          ·
+          <a
+            href="https://www.hackerearth.com/@nattehemalatha/"
+            target="_blank"
+            rel="noopener"
+            >HackerEarth</a
+          >
+        </span>
+      </div>
+    </footer>
+
+    <script>
+      /* =====================================================================
+   EDIT YOUR PROJECT LINKS HERE
+   -----------------------------------------------------------------
+   For each project, fill in "live" and "repo" once that build is
+   deployed / pushed. Leave either one as an empty string "" if it
+   isn't ready yet — the card will automatically show a greyed-out
+   "coming soon" button instead of a broken link. Nothing else in
+   the file needs to change.
+   ===================================================================== */
+      const PROJECTS = [
+        {
+          name: "E-commerce Website",
+          description:
+            "A storefront with product listings, cart and checkout flow.",
+          tags: ["HTML", "CSS", "JavaScript"],
+          live: "", // <-- paste live demo URL here
+          repo: "", // <-- paste GitHub repo URL here
+        },
+        {
+          name: "Food Delivery App",
+          description:
+            "Browse restaurants, build an order and track it through checkout.",
+          tags: ["HTML", "CSS", "JavaScript"],
+          live: "https://hemalatha1111.github.io/fooddelivery/", // <-- paste live demo URL here
+          repo: "https://github.com/hemalatha1111/fooddelivery", // <-- paste GitHub repo URL here
+        },
+        {
+          name: "Product Landing Page",
+          description:
+            "A responsive marketing page for a single product, built for conversion.",
+          tags: ["HTML", "CSS"],
+          live: "https://hemalatha1111.github.io/Pefume/", // <-- paste live demo URL here
+          repo: "https://github.com/hemalatha1111/Pefume", // <-- paste GitHub repo URL here
+        },
+        {
+          name: "TAP Clone",
+          description:
+            "A pixel-level clone of a training-platform landing page.",
+          tags: ["HTML", "CSS"],
+          live: "https://hemalatha1111.github.io/TapClone/",
+          repo: "https://github.com/hemalatha1111/TapClone",
+        },
+        {
+          name: "College Fest Landing Page",
+          description: "Event landing page built for a college cultural fest.",
+          tags: ["HTML", "CSS"],
+          live: "https://hemalatha1111.github.io/udayanFest/", // check this deploys correctly, else clear it
+          repo: "https://github.com/hemalatha1111/udayanFest",
+        },
+        {
+          name: "Spotify Clone",
+          description: "A front-end recreation of the Spotify web player UI.",
+          tags: ["HTML", "CSS", "JavaScript"],
+          live: "https://hemalatha1111.github.io/SpotifyClone/", // <-- paste live demo URL here
+          repo: "https://github.com/hemalatha1111/SpotifyClone", // <-- paste GitHub repo URL here
+        },
+        {
+          name: "Automated Subscription Cancellation",
+          description:
+            "Serverless workflow using EventBridge Scheduler to trigger daily Lambdas, update DynamoDB and send SNS notifications.",
+          tags: ["AWS Lambda", "EventBridge", "DynamoDB", "SNS"],
+          live: "",
+          repo: "https://github.com/hemalatha1111/aws-subscription-automation",
+        },
+      ];
+
+      function projectCard(p, i) {
+        const initials = p.name
+          .split(" ")
+          .slice(0, 2)
+          .map((w) => w[0])
+          .join("")
+          .toUpperCase();
+        const status =
+          p.live || p.repo
+            ? `<span class="proj-status live">Shipped</span>`
+            : `<span class="proj-status pending">In progress</span>`;
+
+        const liveBtn = p.live
+          ? `<a class="proj-link primary" href="${p.live}" target="_blank" rel="noopener">Live demo</a>`
+          : `<span class="proj-link primary disabled">Live demo — soon</span>`;
+
+        const repoBtn = p.repo
+          ? `<a class="proj-link" href="${p.repo}" target="_blank" rel="noopener">Code</a>`
+          : `<span class="proj-link disabled">Code — soon</span>`;
+
+        return `
+    <div class="proj-card">
+      <div class="proj-top">
+        <span class="proj-icon">${initials}</span>
+        ${status}
+      </div>
+      <h3>${p.name}</h3>
+      <p>${p.description}</p>
+      <div class="proj-tags">${p.tags.map((t) => `<span>${t}</span>`).join("")}</div>
+      <div class="proj-actions">${liveBtn}${repoBtn}</div>
+    </div>`;
+      }
+
+      document.getElementById("projGrid").innerHTML =
+        PROJECTS.map(projectCard).join("");
+
+      /* typed role line */
+      const roles = [
+        "Full Stack Developer",
+        "Java Developer",
+        "AWS Enthusiast",
+        "DSA Practitioner",
+      ];
+      const roleEl = document.getElementById("roleLine");
+      let ri = 0,
+        ci = 0,
+        deleting = false;
+
+      function typeLoop() {
+        const word = roles[ri];
+        roleEl.innerHTML =
+          "I'm a " + word.slice(0, ci) + '<span class="cursor"></span>';
+        if (!deleting) {
+          ci++;
+          if (ci > word.length) {
+            deleting = true;
+            setTimeout(typeLoop, 1200);
+            return;
+          }
+        } else {
+          ci--;
+          if (ci === 0) {
+            deleting = false;
+            ri = (ri + 1) % roles.length;
+          }
+        }
+        setTimeout(typeLoop, deleting ? 40 : 80);
+      }
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        roleEl.textContent = "I'm a " + roles[0];
+      } else {
+        typeLoop();
+      }
+
+      /* contact form -> mailto */
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = document.getElementById("fname").value;
+          const email = document.getElementById("femail").value;
+          const subject =
+            document.getElementById("fsubject").value || "Portfolio contact";
+          const message = document.getElementById("fmessage").value;
+          const body = `From: ${name} (${email})%0D%0A%0D%0A${encodeURIComponent(message)}`;
+          window.location.href = `mailto:nattehemalatha@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+        });
+    </script>
+  </body>
+</html>
